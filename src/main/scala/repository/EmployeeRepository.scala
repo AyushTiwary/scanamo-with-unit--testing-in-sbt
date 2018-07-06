@@ -28,9 +28,9 @@ trait EmployeeRepository
 
     def putIfNotExist(employee : Employee) : Future[Either[ConditionalCheckFailedException, PutItemResult]]
 
-    def deleteIfNotExist(employee : Employee) : Future[Either[ConditionalCheckFailedException, DeleteItemResult]]
+    def deleteIfExist(employee : Employee) : Future[Either[ConditionalCheckFailedException, DeleteItemResult]]
 
-    def updateIfNotExist(employee : Employee) : Future[Either[ScanamoError, Employee]]
+    def updateIfExist(employee : Employee) : Future[Either[ScanamoError, Employee]]
 
     def scanWithId(id : Long) : Future[List[Either[DynamoReadError, Employee]]]
 

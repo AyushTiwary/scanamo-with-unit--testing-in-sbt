@@ -68,12 +68,12 @@ class EmployeeRepositoryImpl(dbClient : DynamoDBClient) extends EmployeeReposito
             .put(employee))
     }
 
-    def deleteIfNotExist(employee : Employee) : Future[Either[ConditionalCheckFailedException, DeleteItemResult]] = {
+    def deleteIfExist(employee : Employee) : Future[Either[ConditionalCheckFailedException, DeleteItemResult]] = {
         ScanamoAlpakka.exec(client)(table.given('id > 0)
             .delete('name -> employee.name))
     }
 
-    def updateIfNotExist(employee : Employee) : Future[Either[ScanamoError, Employee]] = {
+    def updateIfExist(employee : Employee) : Future[Either[ScanamoError, Employee]] = {
         ScanamoAlpakka.exec(client)(table.given('id > 0)
             .update('name -> employee.name,
                 set('code -> employee.code)))
