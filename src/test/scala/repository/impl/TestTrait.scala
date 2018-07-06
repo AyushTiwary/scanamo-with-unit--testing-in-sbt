@@ -14,6 +14,7 @@ trait TestTrait extends AsyncFlatSpec with BeforeAndAfterAll {
 
     override def beforeAll() : Unit =
     {
+        Thread.sleep(2000)
         val localArgs = Array("-inMemory", "-sharedDb", "1")
         server = ServerRunner.createServerFromCommandLineArgs(localArgs)
         System.setProperty("sqlite4java.library.path", "native-libs")

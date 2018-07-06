@@ -17,6 +17,8 @@ libraryDependencies ++= Seq(
 
 resolvers += "DynamoDB Local Release Repository" at "https://s3-us-west-2.amazonaws.com/dynamodb-local/release"
 
+parallelExecution in test := false
+
 lazy val copyJars = taskKey[Unit]("copyJars")
 copyJars := {
     import java.nio.file.Files

@@ -1,3 +1,3 @@
 package models
 
-case class Employee(id: Long, name: String, code: Code)
+case class Employee(name: String, id: Long , code: Code)

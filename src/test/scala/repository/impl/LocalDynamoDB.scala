@@ -53,9 +53,6 @@ object LocalDynamoDB {
         )
         val res = try {
             thunk
-        } finally {
-            client.deleteTable(tableName)
-            ()
         }
         res
     }
